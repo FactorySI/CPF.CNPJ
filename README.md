@@ -35,9 +35,19 @@ using CpfCnpjLibrary;
 
 Cnpj.Validar("00358823000193");      // True
 Cnpj.Validar("358823000193");        // True (0 à esquerda)
+
+//Cnpj alfanumerico
+
+Cnpj.Validar("Z8.1RG.51Z/0001-41");  //True
+Cnpj.Validar("6W9ATTLB000119");      //True
+
+Cnpj.Validar("12.ABC.345/01DE-36");  //False
+Cnpj.Validar("AA.AAA.AAA/AAAA-AA");  //False 
+
 Cnpj.Validar("00.358.823/0001-93");  // True
 Cnpj.Validar("00000000000000");      // False
 Cnpj.Validar("xpto");                // False
+
 
 Cnpj.FormatarComPontuacao("00358823000193");     // "00.358.823/0001-93"
 Cnpj.FormatarComPontuacao("00.358.823/0001-93"); // "00.358.823/0001-93"
