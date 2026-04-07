@@ -11,7 +11,7 @@
     <PackageProjectUrl>https://github.com/RBonaldi/CPF.CNPJ</PackageProjectUrl>
     <RepositoryUrl>https://github.com/RBonaldi/CPF.CNPJ</RepositoryUrl>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-    <LocalNuGetOutputPath>D:\FactorySIPackageNuget</LocalNuGetOutputPath>
+  
     <PackageTags>cpf, cnpj, validar, formatar</PackageTags>
     <RepositoryType>GitHub</RepositoryType>
   </PropertyGroup>
@@ -27,11 +27,5 @@
     </None>
   </ItemGroup>
 
-  <Target Name="PackReleaseToLocalFeed" AfterTargets="Build" Condition="'$(PackReleaseToLocalFeedRunning)' != 'true'">
-    <MSBuild
-      Projects="$(MSBuildProjectFullPath)"
-      Targets="Pack"
-      Properties="Configuration=Release;PackageOutputPath=$(LocalNuGetOutputPath);PackReleaseToLocalFeedRunning=true" />
-  </Target>
 
 </Project>
