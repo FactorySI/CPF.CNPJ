@@ -39,5 +39,29 @@
             Assert.IsFalse(Cnpj.Validar("12.ABC.345/01DE-XX"));
             Assert.IsFalse(Cnpj.Validar("AA.AAA.AAA/AAAA-AA"));
         }
+
+        [TestMethod]
+        public void InvalidNumeric()
+        {
+            Assert.IsFalse(Cnpj.Validar(null));
+            Assert.IsFalse(Cnpj.Validar(string.Empty));
+            Assert.IsFalse(Cnpj.Validar("   "));
+            Assert.IsFalse(Cnpj.Validar("00.000.000/0000-00"));
+            Assert.IsFalse(Cnpj.Validar("11.111.111/1111-11"));
+            Assert.IsFalse(Cnpj.Validar("67.419.649/0001-13"));
+            Assert.IsFalse(Cnpj.Validar("67419649000113"));
+            Assert.IsFalse(Cnpj.Validar("67.419.649/0001-1A"));
+            Assert.IsFalse(Cnpj.Validar("67.419.649/0001-123"));
+        }
+
+        [TestMethod]
+        public void InvalidAlphanumericFormat()
+        {
+            Assert.IsFalse(Cnpj.Validar("12.ABC.345/01D-35"));
+            Assert.IsFalse(Cnpj.Validar("12.ABC.345/01DEF-35"));
+            Assert.IsFalse(Cnpj.Validar("12.ABC.345/01D*-35"));
+            Assert.IsFalse(Cnpj.Validar("12.ABC.345/01DE-A5"));
+            Assert.IsFalse(Cnpj.Validar("12.ABC.345/01DE-3A"));
+        }
     }
 }
