@@ -2,15 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>Cpf.Cnpj </PackageId>
-    <Version>1.0.2</Version>
+    <PackageId>Cpf.Cnpj</PackageId>
+    <Version>1.0.3</Version>
     <Authors>Rafael Bonaldi - rafaelbonaldi@gmail.com</Authors>
     <Description>Validar e/ou formatar os valores de CPF e CNPJ. Documentação brasileira.</Description>
     <PackageIcon>logo.png</PackageIcon>
     <PackageReadmeFile>README nuget.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/RBonaldi/CPF.CNPJ</PackageProjectUrl>
     <RepositoryUrl>https://github.com/RBonaldi/CPF.CNPJ</RepositoryUrl>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <LocalNuGetOutputPath>D:\FactorySIPackageNuget</LocalNuGetOutputPath>
     <PackageTags>cpf, cnpj, validar, formatar</PackageTags>
     <RepositoryType>GitHub</RepositoryType>
   </PropertyGroup>
@@ -25,5 +26,12 @@
       <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
+
+  <Target Name="PackReleaseToLocalFeed" AfterTargets="Build" Condition="'$(PackReleaseToLocalFeedRunning)' != 'true'">
+    <MSBuild
+      Projects="$(MSBuildProjectFullPath)"
+      Targets="Pack"
+      Properties="Configuration=Release;PackageOutputPath=$(LocalNuGetOutputPath);PackReleaseToLocalFeedRunning=true" />
+  </Target>
 
 </Project>
